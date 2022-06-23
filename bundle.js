@@ -20499,39 +20499,43 @@ function App() {
   let [serverInput, setServerInput] = (0, import_react2.useState)("https://jam.systems");
   let [serverVInput, setServerVInput] = (0, import_react2.useState)("https://meet.jit.si");
   let [roomInput, setRoomInput] = (0, import_react2.useState)("AnarchoApp-17706");
-  let [VInput, setVInput] = (0, import_react2.useState)(serverVInput.toString() & "/" & roomInput.toString());
+  let [AInput, setAInput] = (0, import_react2.useState)("https://jam.systems/AnarchoApp-17706");
+  let [VInput, setVInput] = (0, import_react2.useState)("https://meet.jit.si/AnarchoApp-17706");
   let [flagInput, setFlagInput] = (0, import_react2.useState)("1");
   let [name, setName] = (0, import_react2.useState)("Gregor");
   let [server, setServer] = (0, import_react2.useState)("https://jam.systems");
+  let [Aserver, setAServer] = (0, import_react2.useState)("https://jam.systems");
   let [Vserver, setVServer] = (0, import_react2.useState)("https://meet.jit.si");
   let [room, setRoom] = (0, import_react2.useState)("AnarchoApp-17706");
   let [flag, setFlag] = (0, import_react2.useState)("https://bafybeicky5uxeyxao7bei75377yfnakiplcj5ocokqggjkrmx6kx3neq2m.ipfs.infura-ipfs.io/");
   const flags = [
-    {id: 1, name: "Anarcho-Communism", pic: "https://bafybeicky5uxeyxao7bei75377yfnakiplcj5ocokqggjkrmx6kx3neq2m.ipfs.infura-ipfs.io/", desc: ""},
-    {id: 2, name: "Anarcho-Collectivism", pic: "https://bafybeic3xstgy6dyayewwqhvwneuuqze32746zsmrrmip3w62bcwpni3ke.ipfs.infura-ipfs.io/", desc: ""},
-    {id: 3, name: "Anarcho-Syndicalism", pic: "https://bafybeidz4drdqc5ige26w77fvqlzxkmz3ujcwj4r5ndtffrqxd7hc3athm.ipfs.infura-ipfs.io/", desc: ""},
-    {id: 4, name: "Anarcho-Mutualism", pic: "https://bafybeieqk7ap5ixpwatn53pixu3dcaemupbcp3vyqr5hchd3to3qyictv4.ipfs.infura-ipfs.io/", desc: ""},
-    {id: 5, name: "Anarcho-Economism", pic: "https://bafybeiejnm3nktx6xgnvgss7ibybfzrdzzmhzqzekqz4ugeeblcrhzhcci.ipfs.infura-ipfs.io/", desc: ""},
-    {id: 6, name: "Anarcho-Naturalism", pic: "https://bafybeicjimbqmyh4nuxihbcy7iicbz375m762o2cygtoybgapikhvsr2zy.ipfs.infura-ipfs.io/", desc: ""},
-    {id: 7, name: "Anarcho-Primitivism", pic: "https://bafybeigh44f3ptehbxntchkpm6zhlpjwet5gyfn74dxkzov7f6hewuifzy.ipfs.infura-ipfs.io/", desc: ""},
-    {id: 8, name: "Anarcho-Egoism", pic: "https://bafybeid4cdkhag4rtfft2u2dqfpiabocvtshlrcfl3ticwnqhm4hm33qyy.ipfs.infura-ipfs.io/", desc: ""},
-    {id: 9, name: "Anarcho-Individualism", pic: "https://bafybeifurkh62fycrbydlazurjsqufdp77aamvlam3z4v5trzz74vk5upi.ipfs.infura-ipfs.io/", desc: ""},
-    {id: 10, name: "Anarcho-Transhumanism", pic: "https://bafybeid67cz4zfzefrzk42fxe5o6aevl54x3mfpja5tyoxt4jrs7vmxxwy.ipfs.infura-ipfs.io/", desc: ""},
-    {id: 11, name: "Anarcho-Waterism", pic: "https://bafybeiadl6art6bikjbdw6rvr3hdnezfe3sijpr6effbf2t73ziuj6lhca.ipfs.infura-ipfs.io/", desc: ""},
-    {id: 12, name: "Anarcho-Communalism", pic: "https://bafybeihq3oa2ma2boij2j3qsha2xm35u6iutmjdopmi4llmda4hoen444q.ipfs.infura-ipfs.io/", desc: ""},
-    {id: 13, name: "Anarcho-Identifism", pic: "https://bafybeihirq524qu5l2etrubrzq7caq6fkeu53arjky5ps2fbnatfb7kudm.ipfs.infura-ipfs.io/", desc: ""},
-    {id: 14, name: "Anarcho-Humanitarianism", pic: "https://bafybeidseco7wzklm5kp7fn3577t4757wjkbof5rejsx3usg5qcuhvvo6u.ipfs.infura-ipfs.io/", desc: ""},
-    {id: 15, name: "Anarcho-Agorism", pic: "https://bafybeib2wgtglvkz22na7vkeyvigfqsbdmaw3i2en5ubwkzk4k5kdjjqua.ipfs.infura-ipfs.io/", desc: ""},
-    {id: 16, name: "Anarcho-Pacifism", pic: "https://bafybeidmqrtwrp3myn7cakan2achqykuvstisgziodushftv6zuib3umja.ipfs.infura-ipfs.io/", desc: ""}
+    {id: "f1", name: "Anarcho-Communism", pic: "https://bafybeicky5uxeyxao7bei75377yfnakiplcj5ocokqggjkrmx6kx3neq2m.ipfs.infura-ipfs.io/", desc: "", color: "#820000"},
+    {id: "f2", name: "Anarcho-Collectivism", pic: "https://bafybeic3xstgy6dyayewwqhvwneuuqze32746zsmrrmip3w62bcwpni3ke.ipfs.infura-ipfs.io/", desc: "", color: "#FE0002"},
+    {id: "f3", name: "Anarcho-Syndicalism", pic: "https://bafybeidz4drdqc5ige26w77fvqlzxkmz3ujcwj4r5ndtffrqxd7hc3athm.ipfs.infura-ipfs.io/", desc: "", color: "#FF4202"},
+    {id: "f4", name: "Anarcho-Mutualism", pic: "https://bafybeieqk7ap5ixpwatn53pixu3dcaemupbcp3vyqr5hchd3to3qyictv4.ipfs.infura-ipfs.io/", desc: "", color: "#FF7F00"},
+    {id: "f5", name: "Anarcho-Economism", pic: "https://bafybeiejnm3nktx6xgnvgss7ibybfzrdzzmhzqzekqz4ugeeblcrhzhcci.ipfs.infura-ipfs.io/", desc: "", color: "#FFFF01"},
+    {id: "f6", name: "Anarcho-Naturalism", pic: "https://bafybeicjimbqmyh4nuxihbcy7iicbz375m762o2cygtoybgapikhvsr2zy.ipfs.infura-ipfs.io/", desc: "", color: "#02FF02"},
+    {id: "f7", name: "Anarcho-Primitivism", pic: "https://bafybeigh44f3ptehbxntchkpm6zhlpjwet5gyfn74dxkzov7f6hewuifzy.ipfs.infura-ipfs.io/", desc: "", color: "#1F833B"},
+    {id: "f8", name: "Anarcho-Egoism", pic: "https://bafybeid4cdkhag4rtfft2u2dqfpiabocvtshlrcfl3ticwnqhm4hm33qyy.ipfs.infura-ipfs.io/", desc: "", color: "#026965"},
+    {id: "f9", name: "Anarcho-Individualism", pic: "https://bafybeifurkh62fycrbydlazurjsqufdp77aamvlam3z4v5trzz74vk5upi.ipfs.infura-ipfs.io/", desc: "", color: "#01FFFF"},
+    {id: "f10", name: "Anarcho-Transhumanism", pic: "https://bafybeid67cz4zfzefrzk42fxe5o6aevl54x3mfpja5tyoxt4jrs7vmxxwy.ipfs.infura-ipfs.io/", desc: "", color: "#0000FE"},
+    {id: "f11", name: "Anarcho-Waterism", pic: "https://bafybeiadl6art6bikjbdw6rvr3hdnezfe3sijpr6effbf2t73ziuj6lhca.ipfs.infura-ipfs.io/", desc: "", color: "#0581FF"},
+    {id: "f12", name: "Anarcho-Communalism", pic: "https://bafybeihq3oa2ma2boij2j3qsha2xm35u6iutmjdopmi4llmda4hoen444q.ipfs.infura-ipfs.io/", desc: "", color: "#8200FE"},
+    {id: "f13", name: "Anarcho-Identifism", pic: "https://bafybeihirq524qu5l2etrubrzq7caq6fkeu53arjky5ps2fbnatfb7kudm.ipfs.infura-ipfs.io/", desc: "", color: "#FF01FF"},
+    {id: "f14", name: "Anarcho-Humanitarianism", pic: "https://bafybeidseco7wzklm5kp7fn3577t4757wjkbof5rejsx3usg5qcuhvvo6u.ipfs.infura-ipfs.io/", desc: "", color: "#FFC186"},
+    {id: "f15", name: "Anarcho-Agorism", pic: "https://bafybeib2wgtglvkz22na7vkeyvigfqsbdmaw3i2en5ubwkzk4k5kdjjqua.ipfs.infura-ipfs.io/", desc: "", color: "#959595"},
+    {id: "f16", name: "Anarcho-Pacifism", pic: "https://bafybeidmqrtwrp3myn7cakan2achqykuvstisgziodushftv6zuib3umja.ipfs.infura-ipfs.io/", desc: "", color: "#000000"}
   ];
   let submit = (e) => {
     e.preventDefault();
     setName(nameInput);
     setServer(serverInput);
+    setAServer(serverInput);
     setVServer(serverVInput);
     setRoom(roomInput);
     setFlag(flag);
-    setVInput(VInput);
+    setAInput(serverInput.toString() + "/" + roomInput.toString());
+    setVInput(serverVInput.toString() + "/" + roomInput.toString());
   };
   return /* @__PURE__ */ import_react2.default.createElement("div", {
     id: "root-inner",
@@ -20557,32 +20561,39 @@ function App() {
   }, "Server:"), /* @__PURE__ */ import_react2.default.createElement("input", {
     id: "serverIn",
     value: serverInput,
-    onChange: (e) => setServerInput(e.target.value)
-  })), /* @__PURE__ */ import_react2.default.createElement("label", {
+    onChange: (e) => setServerInput(e.target.value) | setAInput(e.target.value + "/" + roomInput.toString())
+  }), /* @__PURE__ */ import_react2.default.createElement("a", {
+    href: AInput,
+    target: "_blank"
+  }, "...")), /* @__PURE__ */ import_react2.default.createElement("label", {
     className: "field"
   }, /* @__PURE__ */ import_react2.default.createElement("div", {
     className: "inText"
   }, "VServer:"), /* @__PURE__ */ import_react2.default.createElement("input", {
     id: "serverIn",
     value: serverVInput,
-    onChange: (e) => setServerVInput(e.target.value)
-  })), /* @__PURE__ */ import_react2.default.createElement("label", {
+    onChange: (e) => setServerVInput(e.target.value) | setVInput(e.target.value + "/" + roomInput.toString())
+  }), /* @__PURE__ */ import_react2.default.createElement("a", {
+    href: VInput,
+    target: "_blank"
+  }, "...")), /* @__PURE__ */ import_react2.default.createElement("label", {
     className: "field"
   }, /* @__PURE__ */ import_react2.default.createElement("div", {
     className: "inText"
   }, "Room:"), /* @__PURE__ */ import_react2.default.createElement("input", {
     id: "roomIn",
     value: roomInput,
-    onChange: (e) => setRoomInput(e.target.value)
+    onChange: (e) => setRoomInput(e.target.value) | setAInput(serverInput.toString() + "/" + e.target.value)
   }))), "Flag:", /* @__PURE__ */ import_react2.default.createElement("div", {
     className: "spacer"
   }), /* @__PURE__ */ import_react2.default.createElement("div", {
     id: "flag-div"
-  }, flags.map(({id, name: name2, pic, desc, checked}) => /* @__PURE__ */ import_react2.default.createElement("label", {
+  }, flags.map(({id, name: name2, pic, desc, color, checked}) => /* @__PURE__ */ import_react2.default.createElement("label", {
     key: id
   }, /* @__PURE__ */ import_react2.default.createElement("input", {
     type: "radio",
     id,
+    className: id,
     value: pic,
     name: "FlagsList",
     checked,
