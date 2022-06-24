@@ -1,4 +1,8 @@
-.spacer { height: 10px; }
+.spacer { height: 10px; } .tt { max-width: 350px; z-index: 99; }
+#jitsiMeeting-0 { min-width: 400px; }
+#jitsiMeeting-0 iframe { max-height: 600px; }
+#root-inner { display: inline-block; width:100%; min-width: 400px; background-size: 100vw 100vh; background-attachment: fixed; background-repeat: no-repeat; }
+#root-inner { margin: -35px 0 0 0; }
 [type=radio] {
     appearance: none;
     width: 20px;
@@ -6,6 +10,14 @@
     border-radius: 50%;
     background-clip: content-box;
     padding: 3px;
+}
+.disclaimer { font-size: 10px; margin: 0 0 20px; }
+
+.jam .human-radius {
+    border-radius: 42%;
+}
+.jam .b-0 {
+    background: rgba(255,255,255,0.75);
 }
 .f1 { accent-color: #820000; border: 2px solid #820000; } .f1:checked { background-color: #820000; }
 .f2 { accent-color: #FE0002; border: 2px solid #FE0002; } .f2:checked { background-color: #FE0002; }
@@ -23,7 +35,6 @@
 .f14 { accent-color: #FFC186; border: 2px solid #FFC186; } .f14:checked { background-color: #FFC186; }
 .f15 { accent-color: #959595; border: 2px solid #959595; } .f15:checked { background-color: #959595; }
 .f16 { accent-color: #000000; border: 2px solid #000000; } .f16:checked { background-color: #000000; }
-
 .flg-name {
     max-width: 90vw;
     text-align: left;
@@ -31,13 +42,6 @@
     margin: 0 0 0 0;
     position:relative;
 }
-.jam .human-radius {
-    border-radius: 42%;
-}
-.jam .b-0 {
-    background: rgba(255,255,255,0.75);
-}
-#root-inner { display: inline-block; width:100%; min-width: 400px; background-size: 100vw 100vh; background-attachment: fixed; background-repeat: no-repeat; }
 #flag-div {
     max-width: 455px;
     box-shadow: inset 0 1px 3px #ddd;
@@ -54,6 +58,8 @@
     margin: 0px 5px 0px 0px;
     position: relative;
     text-align: left;
+    z-index: 90;
+    overflow: visible;
 }
 #AnarchoForm .field input {
     max-width: 300px;
@@ -77,16 +83,61 @@
 }
 #AnarchoForm .field input:focus-visible { outline: none; }
 #AnarchoForm .innerForm {
-    max-width: 350px;
+    max-width: 390px;
     position:relative;
     z-index: 95;
 }
+#AnarchoForm [type=submit] {
+    float: right;
+    max-width: 80px !important;
+
+    align-items: center;
+    appearance: none;
+    background-color: #FCFCFD;
+    border-radius: 4px !important;
+    border-width: 0 !important;
+    box-shadow: rgb(45 35 66 / 40%) 0 2px 4px, rgb(45 35 66 / 30%) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset !important;
+    box-sizing: border-box !important;
+    color: #36395A;
+    cursor: pointer;
+    display: inline-flex !important;
+    font-family: "JetBrains Mono",monospace;
+    height: 48px;
+    justify-content: center;
+    line-height: 1;
+    list-style: none;
+    overflow: hidden;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    position: relative;
+    text-align: left;
+    text-decoration: none;
+    transition: box-shadow .15s,transform .15s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    will-change: box-shadow,transform;
+    font-size: 18px;
+}
+#AnarchoForm [type=submit]:hover {
+    box-shadow: rgb(45 35 66 / 40%) 0 4px 8px, rgb(45 35 66 / 30%) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset !important;
+    transform: translateY(-2px) !important;
+}
+#AnarchoForm [type=submit]:active {
+    box-shadow: #d6d6e7 0 3px 7px inset !important;
+    transform: translateY(2px) !important;
+}
+#AnarchoForm [type=submit]:focus {
+    box-shadow: #d6d6e7 0 0 0 1.5px inset, rgb(45 35 66 / 40%) 0 2px 4px, rgb(45 35 66 / 30%) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset !important;
+}
+
 #AnarchoFrame {
     max-width: 455px;
     margin: 0px 0 0px 0;
     position: relative;
     text-align: left;
-    z-index: 90;
+    z-index: 86;
 }
 #VAnarchoFrame {
     max-width: 455px;
@@ -119,7 +170,7 @@
 @media only screen and (max-width: 480px) { #root-inner { background-image: url("https://bafybeiggwet2hsxsfhfx5csa5oyfupwu7wcavcvybk3arzhxyg4b3rctxu.ipfs.infura-ipfs.io/"); } }
 
 .field a, .field a::after {
-    width: auto;
+    width: 36px;
     height: 36px;
     font-size: 36px;
     font-family: 'Bebas Neue', cursive;
@@ -132,6 +183,7 @@
     outline: transparent;
     position: relative;
     float: right;
+    margin: 0 45px 0 0;
 }
 
 .field a::after {
