@@ -45225,7 +45225,6 @@ function App() {
     localStorage.setItem("room", roomInput);
     localStorage.setItem("flag", flag);
     localStorage.setItem("bdate", bdate);
-    alert(horoprop.zodiac.ascendant.sign + " : " + getAscendant());
     birthvar = {year: bdate.getFullYear(), month: bdate.getMonth() + 1, day: bdate.getDate(), hours: bdate.getHours(), minutes: bdate.getMinutes(), seconds: bdate.getSeconds()};
     localStorage.setItem("lat", mLat);
     localStorage.setItem("lng", mLng);
