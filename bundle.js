@@ -45022,7 +45022,7 @@ function App() {
   ];
   const apiRef = (0, import_react4.useRef)();
   const provider = new B();
-  const myIcon = import_leaflet2.default.icon({iconUrl: "marker-icon.png", iconRetinaUrl: "marker-icon-2x.png", shadowUrl: "marker-shadow.png"});
+  const myIcon = import_leaflet2.default.icon({iconUrl: "/dist/marker-icon.png", iconRetinaUrl: "/dist/marker-icon-2x.png", shadowUrl: "/dist/marker-shadow.png"});
   const searchControl = new R({
     marker: {icon: myIcon, draggable: false},
     provider,
@@ -45187,13 +45187,13 @@ function App() {
   }
   function jsorreydate() {
     if (bdate !== null) {
-      return "/jsorrery/?date=" + bdate.getFullYear() + "-" + (bdate.getMonth() + 1).toString().padStart(2, "0") + "-" + bdate.getDate().toString().padStart(2, "0") + "T" + bdate.getHours().toString().padStart(2, "0") + ":" + bdate.getMinutes().toString().padStart(2, "0") + ":" + bdate.getSeconds().toString().padStart(2, "0");
+      return "/dist/jsorrery/?date=" + bdate.getFullYear() + "-" + (bdate.getMonth() + 1).toString().padStart(2, "0") + "-" + bdate.getDate().toString().padStart(2, "0") + "T" + bdate.getHours().toString().padStart(2, "0") + ":" + bdate.getMinutes().toString().padStart(2, "0") + ":" + bdate.getSeconds().toString().padStart(2, "0");
     } else if (birthdate !== null) {
-      return "/jsorrery/?date=" + birthdate.getFullYear() + "-" + (birthdate.getMonth() + 1).toString().padStart(2, "0") + "-" + birthdate.getDate().toString().padStart(2, "0") + "T" + birthdate.getHours().toString().padStart(2, "0") + ":" + birthdate.getMinutes().toString().padStart(2, "0") + ":" + birthdate.getSeconds().toString().padStart(2, "0");
+      return "/dist/jsorrery/?date=" + birthdate.getFullYear() + "-" + (birthdate.getMonth() + 1).toString().padStart(2, "0") + "-" + birthdate.getDate().toString().padStart(2, "0") + "T" + birthdate.getHours().toString().padStart(2, "0") + ":" + birthdate.getMinutes().toString().padStart(2, "0") + ":" + birthdate.getSeconds().toString().padStart(2, "0");
     } else {
       const newdate = new Date();
       setbdate(new Date());
-      return "/jsorrery/?date=" + newdate.getFullYear() + "-" + (newdate.getMonth() + 1).toString().padStart(2, "0") + "-" + newdate.getDate().toString().padStart(2, "0") + "T" + newdate.getHours().toString().padStart(2, "0") + ":" + newdate.getMinutes().toString().padStart(2, "0") + ":" + newdate.getSeconds().toString().padStart(2, "0");
+      return "/dist/jsorrery/?date=" + newdate.getFullYear() + "-" + (newdate.getMonth() + 1).toString().padStart(2, "0") + "-" + newdate.getDate().toString().padStart(2, "0") + "T" + newdate.getHours().toString().padStart(2, "0") + ":" + newdate.getMinutes().toString().padStart(2, "0") + ":" + newdate.getSeconds().toString().padStart(2, "0");
     }
   }
   let horoprop = {
@@ -45477,7 +45477,7 @@ function App() {
   })), /* @__PURE__ */ import_react4.default.createElement("div", {
     id: "astroclock"
   }, /* @__PURE__ */ import_react4.default.createElement("a", {
-    href: "./astroclock/",
+    href: "/dist/astroclock/",
     target: "_blank"
   }, /* @__PURE__ */ import_react4.default.createElement("img", {
     src: "https://bafybeig6diuct22eo3zbhuisntgaqlfhco6qzg55ktw4nn3p5vg2ct6cva.ipfs.infura-ipfs.io/"
