@@ -45067,36 +45067,15 @@ function App() {
   }
   let [bdate, setbdate] = (0, import_react4.useState)(birthdate);
   let [bdata, setbdata] = (0, import_react4.useState)(birthdata);
+  if (bdate == null) {
+    if (birthdate) {
+      setbdate(birthdate);
+    } else {
+      setbdate(new Date());
+    }
+  }
   let Eph = "";
-  function getEphemeris(Eyear, Emonth, Eday, Ehours, Eminutes, Elat, Elong) {
-    Eph = {
-      year: Eyear,
-      month: Emonth,
-      day: Eday,
-      hours: Ehours,
-      minutes: Eminutes,
-      latitude: Elat,
-      longitude: Elong,
-      key: [
-        "sun",
-        "moon",
-        "mercury",
-        "venus",
-        "mars",
-        "jupiter",
-        "saturn",
-        "uranus",
-        "neptune",
-        "pluto",
-        "chiron"
-      ]
-    };
-  }
   let ephemeris = "";
-  if (bdate.getFullYear() !== 0) {
-    getEphemeris(bdate.getFullYear(), bdate.getMonth(), bdate.getDate(), bdate.getHours(), bdate.getMinutes(), parseFloat(mLat), parseFloat(mLng));
-    ephemeris = new Ephemeris.default(Eph);
-  }
   function toRadians(degrees) {
     return degrees * (Math.PI / 180);
   }
@@ -45104,7 +45083,7 @@ function App() {
     return radians * (180 / Math.PI);
   }
   function getAscendant(obliquityEcliptic = 23.4367) {
-    let latitude = mLat;
+    let latitude = localStorage.getItem("lat") ?? mLat;
     const localSiderealTime = getLocalSiderealTime();
     const a2 = -Math.cos(toRadians(localSiderealTime));
     const b2 = Math.sin(toRadians(obliquityEcliptic)) * Math.tan(toRadians(latitude));
@@ -45113,15 +45092,7 @@ function App() {
     const e2 = a2 / d2;
     const f3 = Math.atan(e2);
     let ascendant = toDegrees(f3);
-    if (d2 < 0)
-      ascendant += 180;
-    else
-      ascendant += 360;
-    if (ascendant < 180)
-      ascendant += 180;
-    else
-      ascendant -= 180;
-    return ascendant + obliquityEcliptic;
+    return ascendant;
   }
   function signfromdegrees(deg) {
     switch (true) {
@@ -45165,28 +45136,71 @@ function App() {
         break;
     }
   }
-  function getSunMoonDesc(sunsign, moonsign) {
-    let desc = "";
-    desc = smDesc[sunsign][moonsign].value;
-    alert(desc);
-  }
   Date.prototype.getJulian = function() {
     return Math.floor(this / 864e5 - this.getTimezoneOffset() / 1440 + 24405875e-1);
   };
   function getLocalSiderealTime() {
-    const julianDaysJan1st2000 = 2451545;
-    const julianDaysSince2000 = bdate.getJulian() - julianDaysJan1st2000;
-    const tFactor = julianDaysSince2000 / 36525;
-    const degreesRotationInSiderealDay = 0.98564736629;
-    const lst = 280.46061837 + degreesRotationInSiderealDay * julianDaysSince2000 + 387933e-9 * Math.pow(tFactor, 2) - Math.pow(tFactor, 3) / 3871e4 + mLat;
-    const modLst = parseFloat(lst);
-    return modLst;
+    if (bdate !== null) {
+      const julianDaysJan1st2000 = 2451545;
+      const julianDaysSince2000 = bdate.getJulian() - julianDaysJan1st2000;
+      const tFactor = julianDaysSince2000 / 36525;
+      const degreesRotationInSiderealDay = 0.98564736629;
+      const lst = 280.46061837 + degreesRotationInSiderealDay * julianDaysSince2000 + 387933e-9 * Math.pow(tFactor, 2) - Math.pow(tFactor, 3) / 3871e4 + mLat;
+      const modLst = parseFloat(lst);
+      return modLst;
+    }
+  }
+  function getEphemeris(Eyear, Emonth, Eday, Ehours, Eminutes, Elat, Elong) {
+    Eph = {
+      year: Eyear,
+      month: Emonth,
+      day: Eday,
+      hours: Ehours,
+      minutes: Eminutes,
+      latitude: Elat,
+      longitude: Elong,
+      key: [
+        "sun",
+        "moon",
+        "mercury",
+        "venus",
+        "mars",
+        "jupiter",
+        "saturn",
+        "uranus",
+        "neptune",
+        "pluto",
+        "chiron"
+      ]
+    };
+    return Eph;
+  }
+  if (bdate !== null) {
+    Eph = getEphemeris(bdate.getFullYear(), bdate.getMonth(), bdate.getDate(), bdate.getHours(), bdate.getMinutes(), parseFloat(mLat), parseFloat(mLng));
+    ephemeris = new Ephemeris.default(Eph);
+  } else if (birthdate !== null) {
+    Eph = getEphemeris(birthdate.getFullYear(), birthdate.getMonth(), birthdate.getDate(), birthdate.getHours(), birthdate.getMinutes(), parseFloat(mLat), parseFloat(mLng));
+    ephemeris = new Ephemeris.default(Eph);
+    setbdate(birthdate);
+  } else {
+    setbdate(new Date());
+  }
+  function jsorreydate() {
+    if (bdate !== null) {
+      return "/jsorrery/?date=" + bdate.getFullYear() + "-" + (bdate.getMonth() + 1).toString().padStart(2, "0") + "-" + bdate.getDate().toString().padStart(2, "0") + "T" + bdate.getHours().toString().padStart(2, "0") + ":" + bdate.getMinutes().toString().padStart(2, "0") + ":" + bdate.getSeconds().toString().padStart(2, "0");
+    } else if (birthdate !== null) {
+      return "/jsorrery/?date=" + birthdate.getFullYear() + "-" + (birthdate.getMonth() + 1).toString().padStart(2, "0") + "-" + birthdate.getDate().toString().padStart(2, "0") + "T" + birthdate.getHours().toString().padStart(2, "0") + ":" + birthdate.getMinutes().toString().padStart(2, "0") + ":" + birthdate.getSeconds().toString().padStart(2, "0");
+    } else {
+      const newdate = new Date();
+      setbdate(new Date());
+      return "/jsorrery/?date=" + newdate.getFullYear() + "-" + (newdate.getMonth() + 1).toString().padStart(2, "0") + "-" + newdate.getDate().toString().padStart(2, "0") + "T" + newdate.getHours().toString().padStart(2, "0") + ":" + newdate.getMinutes().toString().padStart(2, "0") + ":" + newdate.getSeconds().toString().padStart(2, "0");
+    }
   }
   let horoprop = {
     zodiac: {
       ascendant: {
         sign: signfromdegrees(getAscendant()),
-        degree: bdate.getDate()
+        degree: 0
       }
     },
     planets: {
@@ -45204,11 +45218,11 @@ function App() {
     houses: {
       hasHouses: true,
       axes: {
-        axis2to8: 27,
-        axis3to9: 56,
-        axis4to10: 81,
-        axis5to11: 114,
-        axis6to12: 156
+        axis2to8: 31,
+        axis3to9: 61,
+        axis4to10: 91,
+        axis5to11: 121,
+        axis6to12: 151
       }
     }
   };
@@ -45225,13 +45239,10 @@ function App() {
     localStorage.setItem("room", roomInput);
     localStorage.setItem("flag", flag);
     localStorage.setItem("bdate", bdate);
-    birthvar = {year: bdate.getFullYear(), month: bdate.getMonth() + 1, day: bdate.getDate(), hours: bdate.getHours(), minutes: bdate.getMinutes(), seconds: bdate.getSeconds()};
     localStorage.setItem("lat", mLat);
     localStorage.setItem("lng", mLng);
-    let newsun = ephemeris.sun.position.apparentLongitude;
-    let newmoon = ephemeris.moon.position.apparentLongitude;
-    setbdata(HouseDesc[signfromdegrees(newsun)].house + "\n" + HouseDesc[signfromdegrees(newsun)].planet + " " + HouseDesc[signfromdegrees(newsun)].planetname + "\n\nArchetypes: " + HouseDesc[signfromdegrees(newsun)].archetypes + "\n\nBody: " + HouseDesc[signfromdegrees(newsun)].body + "\n\nChanges: " + HouseDesc[signfromdegrees(newsun)].changes + "\n\n" + HouseDesc[signfromdegrees(newsun)].icons + "\n" + smDesc[signfromdegrees(newsun)][signfromdegrees(newmoon)] + "\nHouse:\n" + HouseDesc[signfromdegrees(newsun)].desc);
     const astro = document.querySelector("#astrotext");
+    astro.innerHTML = "";
     astro.innerHTML = bdata;
     index_es_default.rebuild();
   };
@@ -45243,26 +45254,71 @@ function App() {
     setTimeout(() => {
       apiRef.current.executeCommand("displayName", nameInput);
     }, "10000");
+    setHoroC(horoprop);
     const h2 = new import_horoscope_drawer.default.Horoscope(HoroC);
     const drawn = h2.draw("#horochart");
+    let newsun = ephemeris.sun.position.apparentLongitude;
+    let newmoon = ephemeris.moon.position.apparentLongitude;
+    let newbdata = HouseDesc[signfromdegrees(newsun)].house + "\n" + HouseDesc[signfromdegrees(newsun)].planet + " " + HouseDesc[signfromdegrees(newsun)].planetname + "\n\nArchetypes: " + HouseDesc[signfromdegrees(newsun)].archetypes + "\n\nBody: " + HouseDesc[signfromdegrees(newsun)].body + "\n\nChanges: " + HouseDesc[signfromdegrees(newsun)].changes + "\n\n" + HouseDesc[signfromdegrees(newsun)].icons + "\n" + smDesc[signfromdegrees(newsun)][signfromdegrees(newmoon)] + "\nHouse:\n" + HouseDesc[signfromdegrees(newsun)].desc;
+    setbdata(newbdata);
+    const astro = document.querySelector("#astrotext");
+    astro.innerHTML = "";
+    astro.innerHTML = newbdata;
     return () => apiRef.abort();
   };
   const handleDateChange = (birthdate2) => {
-    setbdate(birthdate2);
-    if (bdate.getFullYear() !== 0) {
-      getEphemeris(bdate.getFullYear(), bdate.getMonth(), bdate.getDate(), bdate.getHours(), bdate.getMinutes(), parseFloat(mLat), parseFloat(mLng));
-      ephemeris = new Ephemeris.default(Eph);
+    let birthD = new Date(birthdate2);
+    if (birthD !== null) {
+      setbdate(birthdate2);
+      let ephemeris2;
+      let Eph2;
+      Eph2 = getEphemeris(birthD.getFullYear(), birthD.getMonth(), birthD.getDate(), bdate.getHours(), birthD.getMinutes(), parseFloat(mLat), parseFloat(mLng));
+      ephemeris2 = new Ephemeris.default(Eph2);
+      horoprop = {
+        zodiac: {
+          ascendant: {
+            sign: signfromdegrees(getAscendant()),
+            degree: 0
+          }
+        },
+        planets: {
+          sun: ephemeris2.sun.position.apparentLongitude,
+          mercury: ephemeris2.mercury.position.apparentLongitude,
+          venus: ephemeris2.venus.position.apparentLongitude,
+          mars: ephemeris2.mars.position.apparentLongitude,
+          moon: ephemeris2.moon.position.apparentLongitude,
+          jupiter: ephemeris2.jupiter.position.apparentLongitude,
+          saturn: ephemeris2.saturn.position.apparentLongitude,
+          uranus: ephemeris2.uranus.position.apparentLongitude,
+          neptune: ephemeris2.neptune.position.apparentLongitude,
+          pluto: ephemeris2.pluto.position.apparentLongitude
+        },
+        houses: {
+          hasHouses: true,
+          axes: {
+            axis2to8: 27,
+            axis3to9: 56,
+            axis4to10: 81,
+            axis5to11: 114,
+            axis6to12: 156
+          }
+        }
+      };
+      setHoroC(horoprop);
+      let h2 = new import_horoscope_drawer.default.Horoscope(horoprop);
+      let horo = document.querySelector("#horochart");
+      horo.innerHTML = "";
+      let drawn = h2.draw("#horochart");
+      let newsun = ephemeris2.sun.position.apparentLongitude;
+      let newmoon = ephemeris2.moon.position.apparentLongitude;
+      let newbdata = HouseDesc[signfromdegrees(newsun)].house + "\n" + HouseDesc[signfromdegrees(newsun)].planet + " " + HouseDesc[signfromdegrees(newsun)].planetname + "\n\nArchetypes: " + HouseDesc[signfromdegrees(newsun)].archetypes + "\n\nBody: " + HouseDesc[signfromdegrees(newsun)].body + "\n\nChanges: " + HouseDesc[signfromdegrees(newsun)].changes + "\n\n" + HouseDesc[signfromdegrees(newsun)].icons + "\n" + smDesc[signfromdegrees(newsun)][signfromdegrees(newmoon)] + "\nHouse:\n" + HouseDesc[signfromdegrees(newsun)].desc;
+      setbdata(newbdata);
+      const astro = document.querySelector("#astrotext");
+      astro.innerHTML = "";
+      astro.innerHTML = newbdata;
+    } else if (bdate !== null) {
+      setbdate(new Date());
     }
-    setHoroC(horoprop);
-    const h2 = new import_horoscope_drawer.default.Horoscope(HoroC);
-    const horo = document.querySelector("#horochart");
-    horo.innerHTML = "";
-    let newsun = ephemeris.sun.position.apparentLongitude;
-    let newmoon = ephemeris.moon.position.apparentLongitude;
-    setbdata(HouseDesc[signfromdegrees(newsun)].house + "\n" + HouseDesc[signfromdegrees(newsun)].planet + " " + HouseDesc[signfromdegrees(newsun)].planetname + "\n\nArchetypes: " + HouseDesc[signfromdegrees(newsun)].archetypes + "\n\nBody: " + HouseDesc[signfromdegrees(newsun)].body + "\n\nChanges: " + HouseDesc[signfromdegrees(newsun)].changes + "\n\n" + HouseDesc[signfromdegrees(newsun)].icons + "\n" + smDesc[signfromdegrees(newsun)][signfromdegrees(newmoon)] + "\nHouse:\n" + HouseDesc[signfromdegrees(newsun)].desc);
-    const astro = document.querySelector("#astrotext");
-    astro.innerHTML = bdata;
-    const drawn = h2.draw("#horochart");
   };
   const handleReadyToClose = () => {
     alert("Ready to close...");
@@ -45412,7 +45468,7 @@ function App() {
   })), /* @__PURE__ */ import_react4.default.createElement("div", {
     id: "peoplecalc"
   }, /* @__PURE__ */ import_react4.default.createElement("a", {
-    href: "/jsorrery/?date=" + bdate.getFullYear() + "-" + (bdate.getMonth() + 1).toString().padStart(2, "0") + "-" + bdate.getDate().toString().padStart(2, "0") + "T" + bdate.getHours().toString().padStart(2, "0") + ":" + bdate.getMinutes().toString().padStart(2, "0") + ":" + bdate.getSeconds().toString().padStart(2, "0"),
+    href: jsorreydate(),
     target: "_blank"
   }, /* @__PURE__ */ import_react4.default.createElement("svg", {
     id: "horochart"
