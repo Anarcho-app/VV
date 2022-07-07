@@ -30,7 +30,8 @@ body { background-size: cover; background-attachment: fixed !important; backgrou
 .__react_component_tooltip {
     padding: 0px 10px;
     left: 50% !important;
-    z-index: 99999 !important;
+    z-index: 10000 !important;
+    min-width: 300px;
 }
 
 .flickity-viewport { position: relative; width: 200vw; height: 200vh !important; left: 0vw !important; margin-left: 0vw !important; overflow: visible !important; }
