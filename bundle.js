@@ -45497,7 +45497,7 @@ function App() {
     simulateMouseClick(btn1);
     simulateMouseClick(btn1);
     simulateMouseClick(btn1);
-    document.querySelector(".flickity-viewport").style.setProperty("margin-left", "60vw", "");
+    document.querySelector(".flickity-viewport").style.setProperty("margin-left", "57vw", "");
     function simulateMouseClick(element) {
       mouseClickEvents.forEach((mouseEventType) => element.dispatchEvent(new MouseEvent(mouseEventType, {
         view: window,
@@ -45574,7 +45574,7 @@ function App() {
     id: "root-inner",
     style: {padding: "1rem"},
     className: "gallery js-flickity",
-    "data-flickity": '{ "wrapAround": true, "initialIndex": 0 }'
+    "data-flickity": '{ "wrapAround": true, "initialIndex": 0, "selectedAttraction": 0.15, "friction": 0.2, "freeScroll": true, "freeScrollFriction": 0.2 }'
   }, /* @__PURE__ */ import_react5.default.createElement("div", {
     id: "AnarchoFrm",
     className: "gallery-cell is-selected"
