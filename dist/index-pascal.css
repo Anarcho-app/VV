@@ -24,6 +24,7 @@ textarea { max-width: 400px; width: 100%; }
 body { background-size: cover; background-attachment: fixed !important; background-repeat: no-repeat; background-position: 0; }
 #root-outer { max-width: 100vw; width: 100%; overflow: hidden; }
 #root-inner label .inText { background: rgba(0,0,0,0.5); color: #FFFFFF; max-width: 300px; font-stretch: expanded; font-size: 18px; padding: 5px; text-indent: 5%; }
+#root-inner { padding: 10vh 1vh 1vh 1vh !important; }
 
 .disclaimer { font-size: 10px; margin: 0 0 20px; display: none !important; }
 
@@ -47,7 +48,7 @@ body { background-size: cover; background-attachment: fixed !important; backgrou
 
 #lblFlag, #lblMap { display: inline-block; float: left; }
 #lblBirth { display: inline-block; }
-#lblFlag { max-width: 400px; top: 16vh; position: fixed; margin: 0 auto; z-index: 2001; }
+#lblFlag { max-width: 400px; top: 0vh; position: fixed; margin: 0 auto; z-index: 2001; }
 #lblMap { max-width: 400px; }
 
 .f1 { accent-color: #820000; border: 2px solid #820000; } .f1:checked { background-color: #820000; }
@@ -256,7 +257,7 @@ body { background-size: cover; background-attachment: fixed !important; backgrou
         max-width: 400px !important; max-height: 250px !important;
         min-width: 400px !important; min-height: 250px !important;
     }
-    body {max-width: 640px !important;}
+    body {max-width: 640px !important; background-size: 100% 100% !important;}
     .gallery-cell:nth-child(1).is-selected { margin-left: 39vw !important; }
     .gallery-cell:nth-child(2).is-selected { margin-left: 0vw !important; background: rgba(255,255,255,0.7); }
     .gallery-cell:nth-child(3).is-selected { margin-left: 0vw !important; }
