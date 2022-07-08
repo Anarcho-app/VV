@@ -259,7 +259,7 @@ body { background-size: cover; background-attachment: fixed !important; backgrou
     }
     body {max-width: 640px !important; background-size: 150% 100% !important; background-position: center center; }
      #root-inner { padding: 10vh 1vh 1vh 1vh !important; }
-    .gallery-cell:nth-child(1).is-selected { margin-left: 39vw !important; }
+    .gallery-cell:nth-child(1).is-selected { margin-left: 0vw !important; }
     .gallery-cell:nth-child(2).is-selected { margin-left: 0vw !important; background: rgba(255,255,255,0.7); }
     .gallery-cell:nth-child(3).is-selected { margin-left: 0vw !important; }
     .gallery-cell:nth-child(4).is-selected { margin-left: 0vw !important; }
