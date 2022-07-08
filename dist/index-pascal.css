@@ -265,7 +265,7 @@ body { background-size: cover; background-attachment: fixed !important; backgrou
     .gallery-cell:nth-child(6).is-selected { margin-left: 0vw !important; }
 }
 @media only screen and (max-width: 480px) {  body { background-image: url("https://bafybeiggwet2hsxsfhfx5csa5oyfupwu7wcavcvybk3arzhxyg4b3rctxu.ipfs.infura-ipfs.io/"); } }
-@media only screen and (max-width: 415px) { .gallery-cell:nth-child(1).is-selected { margin-left: 72vw !important; } }
+@media only screen and (max-width: 410px) { .gallery-cell:nth-child(1).is-selected { margin-left: 72vw !important; } }
 @media only screen and (max-width: 375px) { .gallery-cell:nth-child(1).is-selected { margin-left: 92vw !important; } }
 
     .field a, .field a::after {
