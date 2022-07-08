@@ -178,11 +178,11 @@ body { background-size: cover; background-attachment: fixed !important; backgrou
 }
 
 #AnarchoForm { z-index: 99; }
-#AnarchoFrm { z-index: 99; min-width: 400px; }
-#AnarchoFrame { max-width: 400px; height: 600px; z-index: 98; }
-#VAnarchoFrame { max-width: 400px; height: 600px; z-index: 97; position: relative !important; }
-#peoplecalc { max-width: 400px; height: 600px; z-index: 96; margin-top: -600px !important; }
-#astroclock { max-width: 400px; height: 600px; z-index: 95; margin-top: -600px !important; }
+#AnarchoFrm { z-index: 99; max-width: 400px; width: 100%; }
+#AnarchoFrame { max-width: 400px; width: 100%; height: 600px; z-index: 98; }
+#VAnarchoFrame { max-width: 400px; width: 100%; height: 600px; z-index: 97; position: relative !important; }
+#peoplecalc { max-width: 400px; width: 100%; height: 600px; z-index: 96; margin-top: -600px !important; }
+#astroclock { max-width: 400px; width: 100%; height: 600px; z-index: 95; margin-top: -600px !important; }
 
 .leaflet-container {
     height: 400px;
