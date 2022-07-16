@@ -45196,11 +45196,19 @@ function App() {
     autoComplete: true,
     autoCompleteDelay: 250
   });
+  const searchControl2 = new R({
+    marker: {icon: myIcon, draggable: false},
+    provider,
+    autoComplete: true,
+    autoCompleteDelay: 250
+  });
   let firstRun = true;
   let mapIT = "";
+  let mapIT2 = "";
+  let chartH = "";
   let current_lat = "";
   let current_long = "";
-  let current_zoom = 16;
+  let current_zoom = 6;
   (0, import_react5.useEffect)(() => {
     current_lat = localStorage.getItem("lat") ?? mLat;
     current_long = localStorage.getItem("lng") ?? mLng;
@@ -45212,6 +45220,70 @@ function App() {
       current_long = ev.latlng.lng;
       setmLat(ev.latlng.lat);
       setmLng(ev.latlng.lng);
+    });
+  }, []);
+  let L22 = import_leaflet2.default;
+  function dump(arr, level) {
+    var dumped_text = "";
+    if (!level)
+      level = 0;
+    var level_padding = "";
+    for (var j2 = 0; j2 < level + 1; j2++)
+      level_padding += "  ";
+    if (typeof arr == "object") {
+      for (var item in arr) {
+        var value = arr[item];
+        if (typeof value == "object") {
+          dumped_text += level_padding + "'" + item + "' ...\n";
+          dumped_text += dump(value, level + 1);
+        } else {
+          dumped_text += level_padding + "'" + item + `' => "` + value + '"\n';
+        }
+      }
+    } else {
+      dumped_text = "===>" + arr + "<===(" + typeof arr + ")";
+    }
+    alert(dumped_text);
+    return dumped_text;
+  }
+  (0, import_react5.useEffect)(() => {
+    let theMarker = "";
+    let aicon = "";
+    let current_flag = "";
+    let current_plants = "";
+    let pcoords = "";
+    current_lat = localStorage.getItem("lat") ?? mLat;
+    current_long = localStorage.getItem("lng") ?? mLng;
+    mapIT2 = L22.map("mapIT2", {center: [current_lat, current_long], zoom: current_zoom});
+    mapIT2.addControl(searchControl2);
+    if (localStorage.getItem("flagplants")) {
+      current_plants = JSON.parse("[" + localStorage.getItem("flagplants") + "]");
+      current_plants.forEach(function(plant) {
+        aicon = L22.icon({iconUrl: plant[2], iconRetinaUrl: plant[2], shadowUrl: "/dist/marker-shadow.png"});
+        pcoords = [plant[0], plant[1]];
+        theMarker = L22.marker(pcoords, {icon: aicon}).addTo(mapIT2);
+      });
+      console.log("Done Plants!");
+    }
+    mapIT2.on("dblclick", function(ev) {
+      current_lat = ev.latlng.lat;
+      current_long = ev.latlng.lng;
+      current_flag = localStorage.getItem("flag");
+      aicon = L22.icon({iconUrl: current_flag, iconRetinaUrl: current_flag, shadowUrl: "/dist/marker-shadow.png"});
+      theMarker = L22.marker([current_lat, current_long], {icon: aicon}).addTo(mapIT2);
+      let mapLayers = mapIT2._layers;
+      let mapnum = 0;
+      let mapstr = "";
+      const map1 = new Map();
+      for (const key2 of Object.keys(mapLayers)) {
+        if (mapnum > 1) {
+          console.log(key2 + " : " + mapLayers[key2].getLatLng() + " : " + mapLayers[key2].options.icon.options.iconUrl);
+          map1.set("id", key2).set("lat", mapLayers[key2].getLatLng().lat).set("lng", mapLayers[key2].getLatLng().lng).set("img", mapLayers[key2].options.icon.options.iconUrl);
+          mapstr = mapstr + '["' + mapLayers[key2].getLatLng().lat + '","' + mapLayers[key2].getLatLng().lng + '","' + mapLayers[key2].options.icon.options.iconUrl + '"],';
+        }
+        mapnum++;
+      }
+      localStorage.setItem("flagplants", mapstr.substr(0, mapstr.length - 1));
     });
   }, []);
   let [nameInput, setNameInput] = (0, import_react5.useState)(localStorage.getItem("name") ?? "Gregor");
@@ -45411,37 +45483,24 @@ function App() {
   let horoasc0 = signfromdegrees(getAscendant(23.4367, getadate()));
   let horoasc1 = getAscendant(23.4367, getadate());
   let horoasc2 = signfromdegrees(getAscendant(23.4367, getadate())) * 30;
-  let horoprop = {
-    zodiac: {
-      ascendant: {
-        sign: horoasc0,
-        degree: horoasc1 - horoasc1
-      }
-    },
+  let horodata = {
     planets: {
-      sun: ephemeris.sun.position.apparentLongitude,
-      mercury: ephemeris.mercury.position.apparentLongitude,
-      venus: ephemeris.venus.position.apparentLongitude,
-      mars: ephemeris.mars.position.apparentLongitude,
-      moon: ephemeris.moon.position.apparentLongitude,
-      jupiter: ephemeris.jupiter.position.apparentLongitude,
-      saturn: ephemeris.saturn.position.apparentLongitude,
-      uranus: ephemeris.uranus.position.apparentLongitude,
-      neptune: ephemeris.neptune.position.apparentLongitude,
-      pluto: ephemeris.pluto.position.apparentLongitude
+      Moon: [ephemeris.moon.position.apparentLongitude],
+      Sun: [ephemeris.sun.position.apparentLongitude],
+      Mercury: [ephemeris.mercury.position.apparentLongitude],
+      Venus: [ephemeris.venus.position.apparentLongitude],
+      Mars: [ephemeris.mars.position.apparentLongitude],
+      Jupiter: [ephemeris.jupiter.position.apparentLongitude],
+      Saturn: [ephemeris.saturn.position.apparentLongitude],
+      Uranus: [ephemeris.uranus.position.apparentLongitude],
+      Neptune: [ephemeris.neptune.position.apparentLongitude],
+      Pluto: [ephemeris.pluto.position.apparentLongitude],
+      Chiron: [ephemeris.chiron.position.apparentLongitude],
+      Lilith: [Math.abs(ephemeris.moon.orbit.meanAscendingNode.apparentLongitude) / 30 + 1],
+      NNode: [Math.abs(ephemeris.moon.orbit.meanApogee.apparentLongitude) / 30 + 1]
     },
-    houses: {
-      hasHouses: true,
-      axes: {
-        axis2to8: 31,
-        axis3to9: 61,
-        axis4to10: 91,
-        axis5to11: 121,
-        axis6to12: 151
-      }
-    }
+    cusps: [300, 340, 30, 60, 75, 90, 116, 172, 210, 236, 250, 274]
   };
-  let [HoroC, setHoroC] = (0, import_react5.useState)(horoprop);
   let submit = (e2) => {
     e2.preventDefault();
     setAInput(serverInput.toString() + "/" + roomInput.toString());
@@ -45461,6 +45520,20 @@ function App() {
     astro.innerHTML = bdata;
     index_es_default.rebuild();
   };
+  let clearflags = (e2) => {
+    e2.preventDefault();
+    localStorage.removeItem("flagplants");
+  };
+  const handleReadyToClose = () => {
+    let iframeIT = "";
+    let addr = "";
+    iframeIT = document.querySelector("#jitsiConferenceFrame0");
+    ;
+    addr = iframeIT.src;
+    iframeIT.src = "";
+    iframeIT.src = addr;
+    alert("Ready to close...");
+  };
   const handleApiReady = async (apiObj) => {
     apiRef.current = apiObj;
     setTimeout(() => {
@@ -45469,9 +45542,8 @@ function App() {
     setTimeout(() => {
       apiRef.current.executeCommand("displayName", nameInput);
     }, "10000");
-    setHoroC(horoprop);
-    const h2 = new import_horoscope_drawer.default.Horoscope(HoroC);
-    const drawn = h2.draw("#horochart");
+    chartH = new astrology.Chart("horochart", 400, 400);
+    chartH.radix(horodata);
     let newsun = ephemeris.sun.position.apparentLongitude;
     let newmoon = ephemeris.moon.position.apparentLongitude;
     let newbdata = HouseDesc[signfromdegrees(newsun)].house + "\n" + HouseDesc[signfromdegrees(newsun)].planet + " " + HouseDesc[signfromdegrees(newsun)].planetname + "\n\nArchetypes: " + HouseDesc[signfromdegrees(newsun)].archetypes + "\n\nBody: " + HouseDesc[signfromdegrees(newsun)].body + "\n\nChanges: " + HouseDesc[signfromdegrees(newsun)].changes + "\n\n" + HouseDesc[signfromdegrees(newsun)].icons + "\n" + smDesc[signfromdegrees(newsun)][signfromdegrees(newmoon)] + "\nHouse:\n" + HouseDesc[signfromdegrees(newsun)].desc;
@@ -45517,41 +45589,26 @@ function App() {
       let Eph2;
       Eph2 = getEphemeris(birthD.getFullYear(), birthD.getMonth(), birthD.getDate(), bdate.getHours(), birthD.getMinutes(), parseFloat(mLat), parseFloat(mLng));
       ephemeris2 = new Ephemeris.default(Eph2);
-      horoprop = {
-        zodiac: {
-          ascendant: {
-            sign: signfromdegrees(getAscendant(23.4367, birthdate2)),
-            degree: 0
-          }
-        },
+      let horodata2 = {
         planets: {
-          sun: ephemeris2.sun.position.apparentLongitude,
-          mercury: ephemeris2.mercury.position.apparentLongitude,
-          venus: ephemeris2.venus.position.apparentLongitude,
-          mars: ephemeris2.mars.position.apparentLongitude,
-          moon: ephemeris2.moon.position.apparentLongitude,
-          jupiter: ephemeris2.jupiter.position.apparentLongitude,
-          saturn: ephemeris2.saturn.position.apparentLongitude,
-          uranus: ephemeris2.uranus.position.apparentLongitude,
-          neptune: ephemeris2.neptune.position.apparentLongitude,
-          pluto: ephemeris2.pluto.position.apparentLongitude
+          Moon: [ephemeris2.moon.position.apparentLongitude],
+          Sun: [ephemeris2.sun.position.apparentLongitude],
+          Mercury: [ephemeris2.mercury.position.apparentLongitude],
+          Venus: [ephemeris2.venus.position.apparentLongitude],
+          Mars: [ephemeris2.mars.position.apparentLongitude],
+          Jupiter: [ephemeris2.jupiter.position.apparentLongitude],
+          Saturn: [ephemeris2.saturn.position.apparentLongitude],
+          Uranus: [ephemeris2.uranus.position.apparentLongitude],
+          Neptune: [ephemeris2.neptune.position.apparentLongitude],
+          Pluto: [ephemeris2.pluto.position.apparentLongitude],
+          Chiron: [ephemeris2.chiron.position.apparentLongitude],
+          Lilith: [Math.abs(ephemeris2.moon.orbit.meanAscendingNode.apparentLongitude) / 30 + 1],
+          NNode: [Math.abs(ephemeris2.moon.orbit.meanApogee.apparentLongitude) / 30 + 1]
         },
-        houses: {
-          hasHouses: true,
-          axes: {
-            axis2to8: 27,
-            axis3to9: 56,
-            axis4to10: 81,
-            axis5to11: 114,
-            axis6to12: 156
-          }
-        }
+        cusps: [300, 340, 30, 60, 75, 90, 116, 172, 210, 236, 250, 274]
       };
-      setHoroC(horoprop);
-      let h2 = new import_horoscope_drawer.default.Horoscope(horoprop);
-      let horo = document.querySelector("#horochart");
-      horo.innerHTML = "";
-      let drawn = h2.draw("#horochart");
+      chartH = new astrology.Chart("horochart", 400, 400);
+      chartH.radix(horodata2);
       let newsun = ephemeris2.sun.position.apparentLongitude;
       let newmoon = ephemeris2.moon.position.apparentLongitude;
       let newbdata = HouseDesc[signfromdegrees(newsun)].house + "\n" + HouseDesc[signfromdegrees(newsun)].planet + " " + HouseDesc[signfromdegrees(newsun)].planetname + "\n\nArchetypes: " + HouseDesc[signfromdegrees(newsun)].archetypes + "\n\nBody: " + HouseDesc[signfromdegrees(newsun)].body + "\n\nChanges: " + HouseDesc[signfromdegrees(newsun)].changes + "\n\n" + HouseDesc[signfromdegrees(newsun)].icons + "\n" + smDesc[signfromdegrees(newsun)][signfromdegrees(newmoon)] + "\nHouse:\n" + HouseDesc[signfromdegrees(newsun)].desc;
@@ -45562,9 +45619,6 @@ function App() {
     } else if (bdate !== null) {
       setbdate(new Date());
     }
-  };
-  const handleReadyToClose = () => {
-    alert("Ready to close...");
   };
   return /* @__PURE__ */ import_react5.default.createElement("div", {
     id: "root-outer"
@@ -45657,7 +45711,7 @@ function App() {
     value: pic,
     name: "FlagsList",
     checked,
-    onChange: (e2) => setFlagInput(e2.target.checked) | apiRef.current.executeCommand("avatarUrl", pic),
+    onChange: (e2) => setFlagInput(e2.target.checked) | setFlag(pic) | localStorage.setItem("flag", pic) | apiRef.current.executeCommand("avatarUrl", pic),
     onInput: (e2) => setFlag(pic)
   }), /* @__PURE__ */ import_react5.default.createElement(index_es_default, {
     class: "tt",
@@ -45717,14 +45771,14 @@ function App() {
       displayName: nameInput
     },
     onApiReady: (externalApi) => handleApiReady(externalApi),
-    onReadyToClose: handleReadyToClose
+    onReadyToClose: (externalApi) => handleReadyToClose(externalApi)
   })), /* @__PURE__ */ import_react5.default.createElement("div", {
     id: "peoplecalc",
     className: "gallery-cell"
   }, /* @__PURE__ */ import_react5.default.createElement("a", {
     href: jsorreydate(),
     target: "_blank"
-  }, /* @__PURE__ */ import_react5.default.createElement("svg", {
+  }, /* @__PURE__ */ import_react5.default.createElement("div", {
     id: "horochart"
   })), /* @__PURE__ */ import_react5.default.createElement("textarea", {
     id: "astrotext"
@@ -45736,5 +45790,14 @@ function App() {
     target: "_blank"
   }, /* @__PURE__ */ import_react5.default.createElement("img", {
     src: "https://bafybeig6diuct22eo3zbhuisntgaqlfhco6qzg55ktw4nn3p5vg2ct6cva.ipfs.infura-ipfs.io/"
-  }))))));
+  }))), /* @__PURE__ */ import_react5.default.createElement("label", {
+    id: "lblMap2"
+  }, /* @__PURE__ */ import_react5.default.createElement("div", {
+    className: "inText"
+  }, "Flag Planting:"), /* @__PURE__ */ import_react5.default.createElement("div", {
+    id: "mapIT2"
+  }), /* @__PURE__ */ import_react5.default.createElement("button", {
+    id: "clrflgbtn",
+    onClick: clearflags
+  }, "Clear Flags")))));
 }
