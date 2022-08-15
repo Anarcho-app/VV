@@ -262,11 +262,11 @@ button#clrflgbtn { max-width: 100% !important; margin-right: 7vh; }
     #AnarchoFrame { float: left; margin: 0px 0 0px 0 !important; }
     #VAnarchoFrame { float: left; margin: 0px 0 0px 0 !important; }
 }
-@media only screen and (min-width: 1889px) { body { background-image: url("https://bafybeihwfjxdme3xd3ccrc4p4qlydxm6bxenpn44fh3f2aywxwvmbruify.ipfs.infura-ipfs.io/"); } }
-@media only screen and (max-width: 1888px) { body { background-image: url("https://bafybeidg6l4a6ct6wctse62kid4mwz4tzwa6a3vblkn77n2zq3m7acw7ci.ipfs.infura-ipfs.io/"); } }
-@media only screen and (max-width: 1448px) { body { background-image: url("https://bafybeigww3ranrntz4cwz5v7d4qkfoydoj3lku7zu55nkljpkdlrkfztt4.ipfs.infura-ipfs.io/"); } }
-@media only screen and (max-width: 1024px) { body { background-image: url("https://bafybeicboioaw3i3uijuibdpiqkbnb4wrqkytw7ctezti5hgxwslyyj6wq.ipfs.infura-ipfs.io/"); } }
-@media only screen and (max-width: 640px) { body { background-image: url("https://bafybeidcmhvanptvr3s3iyw5sk6ewaphuu3l233o4yvdasu7ysed5dj7fq.ipfs.infura-ipfs.io/"); }
+@media only screen and (min-width: 1889px) { body { background-image: url("https://ipfs.io/ipfs/QmeuaXddfXsyx2CD9XciJNJeckq9XQ8TbMfmyMecaL2geR"); } }
+@media only screen and (max-width: 1888px) { body { background-image: url("https://ipfs.io/ipfs/QmVGXBG4MA6K5kS88JaW2WAHZkjtCFL5YxTL62hTNyXkAm"); } }
+@media only screen and (max-width: 1448px) { body { background-image: url("https://ipfs.io/ipfs/QmcnohXA846U4PRL25nq7bgZ3e5T7dY8zCki9q7TdDMXj4"); } }
+@media only screen and (max-width: 1024px) { body { background-image: url("https://ipfs.io/ipfs/QmSk88S4Z4JCyyBFwjaVTxRaERDcEwxUKDc9xQ7zLkLY7u"); } }
+@media only screen and (max-width: 640px) { body { background-image: url("https://ipfs.io/ipfs/QmbiG7MRV7E2H9HqNKh3REp4ZvYPf8mCZsX6VAxk2KNCkk"); }
     #astroclock canvas {
         width: 400px !important; height: 250px !important;
         max-width: 400px !important; max-height: 250px !important;
@@ -282,7 +282,7 @@ button#clrflgbtn { max-width: 100% !important; margin-right: 7vh; }
     .gallery-cell:nth-child(6).is-selected { margin-left: 0vw !important; }
     #lblMap2 { max-width: 400px !important; }
 }
-@media only screen and (max-width: 480px) {  body { background-image: url("https://bafybeiggwet2hsxsfhfx5csa5oyfupwu7wcavcvybk3arzhxyg4b3rctxu.ipfs.infura-ipfs.io/"); } }
+@media only screen and (max-width: 480px) {  body { background-image: url("https://ipfs.io/ipfs/QmUxhG1tkqyvRT8JJguXGpJCSzSdbqXypFUfNafxhw166w"); } }
 @media only screen and (max-width: 410px) { .gallery-cell:nth-child(1).is-selected { margin-left: 72vw !important; } }
 @media only screen and (max-width: 375px) { .gallery-cell:nth-child(1).is-selected { margin-left: 92vw !important; } }
 
