@@ -35,7 +35,7 @@ body { background-size: cover; background-attachment: fixed !important; backgrou
     min-width: 300px;
 }
 
-.flickity-viewport { position: relative; width: 200vw; height: 200vh !important; left: 0vw !important; margin: 6vw 0 0 -3vw !important; overflow: visible !important; }
+.flickity-viewport { position: relative; width: 200vw; height: 200vh !important; left: 0vw !important; overflow: visible !important; }
 .flickity-slider { margin: 0 !important; }
 .gallery-cell { z-index: 99; }
 
