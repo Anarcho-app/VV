@@ -1,0 +1,11 @@
+{
+	"name": "Anarcho App:VV",
+	"short_name": "VV",
+	"start_url": "https://anarcho.app",
+	"display": "standalone",
+	"icons": [{
+	  "src": "aa-vv.png",
+	  "sizes": "512x512",
+ 	  "type": "image/png"
+	}]
+}
