@@ -282,7 +282,10 @@ button#clrflgbtn { max-width: 100% !important; margin-right: 7vh; }
     .gallery-cell:nth-child(6).is-selected { margin-left: 0vw !important; }
     #lblMap2 { max-width: 400px !important; }
 }
-@media only screen and (max-width: 480px) {  body { background-image: url("https://ipfs.io/ipfs/QmUxhG1tkqyvRT8JJguXGpJCSzSdbqXypFUfNafxhw166w"); } }
+@media only screen and (max-width: 480px) {  
+    body { background-image: url("https://ipfs.io/ipfs/QmUxhG1tkqyvRT8JJguXGpJCSzSdbqXypFUfNafxhw166w"); } 
+    .flickity-slider { margin: 55px -6px 0!important; }
+}
 @media only screen and (max-width: 410px) { .gallery-cell:nth-child(1).is-selected { margin-left: 72vw !important; } }
 @media only screen and (max-width: 375px) { .gallery-cell:nth-child(1).is-selected { margin-left: 92vw !important; } }
 
