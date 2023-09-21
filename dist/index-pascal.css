@@ -179,6 +179,7 @@ body { background-size: cover; background-attachment: fixed !important; backgrou
 }
 button#clrflgbtn { max-width: 100% !important; margin-right: 7vh; }
 
+.gallery-cell:nth-child(1).is-selected { transform: translateX(0px) !important; }
 #AnarchoForm { z-index: 99; }
 #AnarchoFrm { z-index: 99; max-width: 400px; width: 100%; }
 #AnarchoFrame { max-width: 400px; width: 100%; height: 600px; z-index: 98; }
