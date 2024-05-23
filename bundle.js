@@ -45155,22 +45155,22 @@ function App() {
   const fdesc15 = "Anarcho-agorism is a social philosophy that advocates creating a society in which all relations between people are voluntary exchanges by means of counter-economics, engaging with aspects of nonviolent revolution. It was first proposed by American libertarian philosopher Samuel Edward Konkin III (1947\u20132004) at two conferences, CounterCon I in October 1974 and CounterCon II in May 1975.";
   const fdesc16 = "Anarcho-pacifism, also referred to as anarchist pacifism and pacifist anarchism, is an anarchist school of thought that advocates for the use of peaceful, non-violent forms of resistance in the struggle for social change. Anarcho-pacifism rejects the principle of violence which is seen as a form of power and therefore as contradictory to key anarchist ideals such as the rejection of hierarchy and dominance. Many anarcho-pacifists are also Christian anarchists, who reject war and the use of violence.";
   const flags = [
-    {id: "f1", name: "Anarcho-Communism", pic: "https://ipfs.io/ipfs/QmTNZEsqxw2ZUw3HyAmmrA7arfd1iRvaMzQxHqZhe8h5wx", desc: fdesc1, color: "#820000"},
-    {id: "f2", name: "Anarcho-Collectivism", pic: "https://ipfs.io/ipfs/QmUWkeqPcHcNutMCxwYECYXgDzGU2rVtw51EZE76TQXXBv", desc: fdesc2, color: "#FE0002"},
-    {id: "f3", name: "Anarcho-Syndicalism", pic: "https://ipfs.io/ipfs/QmWYQvrA94W7V3x983dNxNbq4pq5GKqNFuxEQh1RRsEE26", desc: fdesc3, color: "#FF4202"},
-    {id: "f4", name: "Anarcho-Mutualism", pic: "https://ipfs.io/ipfs/QmY472aS7r6N8LtN6qPSdMmqiP6LBe93nNspkqoni78erA", desc: fdesc4, color: "#FF7F00"},
-    {id: "f5", name: "Anarcho-Economism", pic: "https://ipfs.io/ipfs/QmXb5PH5VR5HyuaUjyzHijpaw8VrXcig4UQ8qSJPNNdgC9", desc: fdesc5, color: "#FFFF01"},
-    {id: "f6", name: "Anarcho-Naturalism", pic: "https://ipfs.io/ipfs/QmTGdjhjjBKDdx7Vu8YqQx1L1E14obDET21ERECVHH1MRF", desc: fdesc6, color: "#02FF02"},
-    {id: "f7", name: "Anarcho-Primitivism", pic: "https://ipfs.io/ipfs/QmbnzBMucb9yt5DXS735ncUXaHzNeY7bysFTcWUaLNc7jB", desc: fdesc7, color: "#1F833B"},
-    {id: "f8", name: "Anarcho-Egoism", pic: "https://ipfs.io/ipfs/QmWgx9ZeStqkoj9rjD2JNhhbwnFvKB4QJmbn4wxTomaPEM", desc: fdesc8, color: "#026965"},
-    {id: "f9", name: "Anarcho-Individualism", pic: "https://ipfs.io/ipfs/QmaVQe65VHstwZjJkd7fb44tU19FbhNaNnXqugep85gSqX", desc: fdesc9, color: "#01FFFF"},
-    {id: "f10", name: "Anarcho-Transhumanism", pic: "https://ipfs.io/ipfs/QmWtJ2sVKPYxGJjByopkT5cyRZm7Haj1pvfBBk5ieDLeBf", desc: fdesc10, color: "#0000FE"},
-    {id: "f11", name: "Anarcho-Waterism", pic: "https://ipfs.io/ipfs/QmNZpPzAbwYgckFa8xfM8mggkFqKCT28wQRgK14b6jbeDM", desc: fdesc11, color: "#0581FF"},
-    {id: "f12", name: "Anarcho-Communalism", pic: "https://ipfs.io/ipfs/QmeYrgx6W4KRqGzR6625suGMFMwxnTdpVTeXQ5tq1BZ2ou", desc: fdesc12, color: "#8200FE"},
-    {id: "f13", name: "Anarcho-Identifism", pic: "https://ipfs.io/ipfs/QmdzRKR3GEhHenZQUqquXv2JJ55K2rRQCLZ1S5nNqTejgv", desc: fdesc13, color: "#FF01FF"},
-    {id: "f14", name: "Anarcho-Humanitarianism", pic: "https://ipfs.io/ipfs/QmW2A2v3bQ4id1nhvPLAd1JfUEKU7DvpzPc1DcufMEXYma", desc: fdesc14, color: "#FFC186"},
-    {id: "f15", name: "Anarcho-Agorism", pic: "https://ipfs.io/ipfs/QmSHmUFDjAwKnDbfp7sQazAzaXPuFpVWrcBGV3JTJXkS4w", desc: fdesc15, color: "#959595"},
-    {id: "f16", name: "Anarcho-Pacifism", pic: "https://ipfs.io/ipfs/QmVeFqeiLgSDTfG8B2RSy1RT8X4py91KueFgyfBtG27B4K", desc: fdesc16, color: "#000000"}
+    {id: "f1", name: "Anarcho-Communism", pic: "https://ipfs.fleek.co/ipfs/bafybeicky5uxeyxao7bei75377yfnakiplcj5ocokqggjkrmx6kx3neq2m", desc: fdesc1, color: "#820000"},
+    {id: "f2", name: "Anarcho-Collectivism", pic: "https://ipfs.fleek.co/ipfs/bafybeic3xstgy6dyayewwqhvwneuuqze32746zsmrrmip3w62bcwpni3ke", desc: fdesc2, color: "#FE0002"},
+    {id: "f3", name: "Anarcho-Syndicalism", pic: "https://ipfs.fleek.co/ipfs/bafybeidz4drdqc5ige26w77fvqlzxkmz3ujcwj4r5ndtffrqxd7hc3athm", desc: fdesc3, color: "#FF4202"},
+    {id: "f4", name: "Anarcho-Mutualism", pic: "https://ipfs.fleek.co/ipfs/bafybeieqk7ap5ixpwatn53pixu3dcaemupbcp3vyqr5hchd3to3qyictv4", desc: fdesc4, color: "#FF7F00"},
+    {id: "f5", name: "Anarcho-Economism", pic: "https://ipfs.fleek.co/ipfs/bafybeiejnm3nktx6xgnvgss7ibybfzrdzzmhzqzekqz4ugeeblcrhzhcci", desc: fdesc5, color: "#FFFF01"},
+    {id: "f6", name: "Anarcho-Naturalism", pic: "https://ipfs.fleek.co/ipfs/bafybeicjimbqmyh4nuxihbcy7iicbz375m762o2cygtoybgapikhvsr2zy", desc: fdesc6, color: "#02FF02"},
+    {id: "f7", name: "Anarcho-Primitivism", pic: "https://ipfs.fleek.co/ipfs/bafybeigh44f3ptehbxntchkpm6zhlpjwet5gyfn74dxkzov7f6hewuifzy", desc: fdesc7, color: "#1F833B"},
+    {id: "f8", name: "Anarcho-Egoism", pic: "https://ipfs.fleek.co/ipfs/bafybeid4cdkhag4rtfft2u2dqfpiabocvtshlrcfl3ticwnqhm4hm33qyy", desc: fdesc8, color: "#026965"},
+    {id: "f9", name: "Anarcho-Individualism", pic: "https://ipfs.fleek.co/ipfs/bafybeifurkh62fycrbydlazurjsqufdp77aamvlam3z4v5trzz74vk5upi", desc: fdesc9, color: "#01FFFF"},
+    {id: "f10", name: "Anarcho-Transhumanism", pic: "https://ipfs.fleek.co/ipfs/bafybeid67cz4zfzefrzk42fxe5o6aevl54x3mfpja5tyoxt4jrs7vmxxwy", desc: fdesc10, color: "#0000FE"},
+    {id: "f11", name: "Anarcho-Waterism", pic: "https://ipfs.fleek.co/ipfs/bafybeiadl6art6bikjbdw6rvr3hdnezfe3sijpr6effbf2t73ziuj6lhca", desc: fdesc11, color: "#0581FF"},
+    {id: "f12", name: "Anarcho-Communalism", pic: "https://ipfs.fleek.co/ipfs/bafybeihq3oa2ma2boij2j3qsha2xm35u6iutmjdopmi4llmda4hoen444q", desc: fdesc12, color: "#8200FE"},
+    {id: "f13", name: "Anarcho-Identifism", pic: "https://ipfs.fleek.co/ipfs/bafybeihirq524qu5l2etrubrzq7caq6fkeu53arjky5ps2fbnatfb7kudm", desc: fdesc13, color: "#FF01FF"},
+    {id: "f14", name: "Anarcho-Humanitarianism", pic: "https://ipfs.fleek.co/ipfs/bafybeidseco7wzklm5kp7fn3577t4757wjkbof5rejsx3usg5qcuhvvo6u", desc: fdesc14, color: "#FFC186"},
+    {id: "f15", name: "Anarcho-Agorism", pic: "https://ipfs.fleek.co/ipfs/bafybeib2wgtglvkz22na7vkeyvigfqsbdmaw3i2en5ubwkzk4k5kdjjqua", desc: fdesc15, color: "#959595"},
+    {id: "f16", name: "Anarcho-Pacifism", pic: "https://ipfs.fleek.co/ipfs/bafybeidmqrtwrp3myn7cakan2achqykuvstisgziodushftv6zuib3umja", desc: fdesc16, color: "#000000"}
   ];
   function getWindowDimensions() {
     const {innerWidth: width, innerHeight: height} = window;
