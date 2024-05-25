@@ -46434,7 +46434,10 @@ function App() {
     autoCompleteDelay: 250
   });
   //const pmt = new PMTiles("https://build.protomaps.com/20240524.pmtiles");
-  const pmt_src = "https://corsproxy.io?https://build.protomaps.com/20240524.pmtiles";
+  //const pmt_src = "https://corsproxy.io?https://build.protomaps.com/20240524.pmtiles";
+  const pmt_src = "https://proxy.mangaraiku.eu.org/?url=https://build.protomaps.com/20240524.pmtiles"
+  
+  Content-Disposition: attachment; filename="MyFileName.ext"
   let firstRun = true;
   let mapIT = "";
   let mapIT2 = "";
