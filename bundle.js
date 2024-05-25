@@ -46434,7 +46434,7 @@ function App() {
     autoCompleteDelay: 250
   });
   //const pmt = new PMTiles("https://build.protomaps.com/20240524.pmtiles");
-  const pmt_src = "https://build.protomaps.com/20240524.pmtiles";
+  const pmt_src = "https://corsproxy.io?https://build.protomaps.com/20240524.pmtiles";
   let firstRun = true;
   let mapIT = "";
   let mapIT2 = "";
