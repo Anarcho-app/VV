@@ -46488,7 +46488,7 @@ function App() {
     current_lat = localStorage.getItem("lat") ?? mLat;
     current_long = localStorage.getItem("lng") ?? mLng;
     mapIT2 = L22.map("mapIT2", {center: [current_lat, current_long], zoom: current_zoom});
-    //protomapsL.leafletLayer({url: pmt_src, theme: "light"}).addTo(mapIT2);
+    protomapsL.leafletLayer({url: pmt_src, theme: "light"}).addTo(mapIT2);
     mapIT2.addControl(searchControl2);
     if (localStorage.getItem("flagplants")) {
       current_plants = JSON.parse("[" + localStorage.getItem("flagplants") + "]");
