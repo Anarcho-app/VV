@@ -46435,7 +46435,7 @@ function App() {
   });
   //const pmt = new PMTiles("https://build.protomaps.com/20240524.pmtiles");
   //const pmt_src = "https://corsproxy.io?https://build.protomaps.com/20240524.pmtiles";
-  const pmt_src = "https://proxy.mangaraiku.eu.org/?url=https://build.protomaps.com/20240524.pmtiles";
+  const pmt_src = "https://download-proxy.zhaofengying.com/api/download?url=https%3A%2F%2Fbuild.protomaps.com%2F20240524.pmtiles";
   
   let firstRun = true;
   let mapIT = "";
