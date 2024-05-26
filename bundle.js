@@ -46435,7 +46435,7 @@ function App() {
   });
   //const pmt = new PMTiles("https://build.protomaps.com/20240524.pmtiles");
   //const pmt_src = "https://corsproxy.io?https://build.protomaps.com/20240524.pmtiles";
-  const pmt_src = "https://fileshare2110.depositfiles.com/auth-1716747033403758e2e96d40e91c3f54-104.251.250.236-13517432-197386553-guest/FS211-1/osm-2020-02-10-na.pmtiles";
+  const pmt_src = "https://download-proxy.zhaofengying.com/api/download?url=https://build.protomaps.com/20240524.pmtiles";
   
   let firstRun = true;
   let mapIT = "";
